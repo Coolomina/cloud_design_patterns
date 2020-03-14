@@ -1,0 +1,2 @@
+# Compensating transaction pattern
+

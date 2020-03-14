@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  app:
+    build: .
+    volumes:
+      - ${PWD}:/app
+      - ./vendor:/usr/local/bundle
+    environment: 
+      - REDISTOGO_URL=redis://redis/1
+      - REDIS_PROVIDER=REDISTOGO_URL
+  
+  redis:
+    image: redis:5.0.7
