@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  consumer:
+    build:
+      dockerfile: ../Dockerfile
+      context: ./consumer
+    ports:
+      - "8080:4567"
+    environment: 
+      - "BACKEND_URL=backend1"
+    volumes: 
+      - $PWD/consumer:/app
+      - $PWD/consumer/vendor:/usr/local/bundle
+  
+  backend1:
+    build:
+      dockerfile: ../Dockerfile
+      context: ./backend
+    volumes: 
+      - $PWD/backend:/app
+      - $PWD/backend/vendor:/usr/local/bundle
+    environment: 
+      - "SERVICE_NAME=backend1"
