@@ -3,7 +3,7 @@ services:
   app:
     build: .
     ports:
-      - "8080:4567"
+      - "8081:4567"
     volumes: 
       - $PWD:/app
       - $PWD/vendor:/usr/local/bundle
