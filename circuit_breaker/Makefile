@@ -9,4 +9,4 @@ install_deps:
 	docker-compose run backend1 bundle install
 
 chaos:
-	docker-compose stop backend1
+	docker-compose pause backend1

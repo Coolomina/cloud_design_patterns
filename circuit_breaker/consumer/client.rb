@@ -6,8 +6,8 @@ class BackendClient
     @@light = Stoplight('call') {
       url = "http://#{ENV.fetch('BACKEND_URL')}:4567"
       conn = Faraday::Connection.new(url)
-      conn.options.timeout = 1
       conn.options.open_timeout = 1
+      conn.options.timeout = 2
   
       conn.get(url).body
     }
