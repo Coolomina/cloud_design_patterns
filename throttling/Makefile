@@ -1,3 +1,6 @@
+up:
+	docker-compose up -d
+
 premium:
 	hey -H "X-Premium: true" -q 4 -z 5s -c 1 http://localhost:8081
 

@@ -12,15 +12,11 @@ class Rack::Throttle::PremiumUser < Rack::Throttle::Second
   end
   alias_method :max_per_window, :max_per_second
 
-  def client_identifier(request)
-    request.get_header('HTTP_X_MAIL')
-  end
-
   private
 
   def is_premium_user(request = nil)
     header = request.get_header('HTTP_X_PREMIUM')
     
-    header == 'true' || header == true
+    header == 'true'
   end
 end

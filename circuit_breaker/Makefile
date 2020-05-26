@@ -2,7 +2,7 @@ build:
 	docker-compose build
 
 up:
-	docker-compose up
+	docker-compose up -d
 
 install_deps:
 	docker-compose run consumer bundle install
