@@ -5,7 +5,7 @@ set :bind, '0.0.0.0'
 
 get '/' do
   response = {
-    'message' => "Hoooola desde #{ENV.fetch('SERVICE_NAME')}"
+    'message' => "The store is healthy!"
   }
 
   response.to_json
