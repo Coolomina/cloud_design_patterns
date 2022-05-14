@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  client:
+    image: ruby:3.1.2-slim
+    volumes:
+      - $PWD:/app
+    entrypoint: bash
+    working_dir: /app
+  
+  server:
+    image: nginx
