@@ -1,13 +1,18 @@
 require 'net/http'
 
-def get(host, path, retries = 3, backoff = 2)
+def fibonacci(n)
+  return n if (0..1).include? n
+  (fibonacci(n - 1) + fibonacci(n - 2))
+end
+
+def get(host, path, retries = 3, backoff = 4)
   c = Net::HTTP.new(host)
 
   puts "INFO -- Trying http://#{host}#{path}"
   response = c.request_get(path)
 rescue StandardError => e
   puts "ERROR -- Error caught (#{e.class})"
-  wait_time_in_seconds = 2**backoff
+  wait_time_in_seconds = fibonacci(backoff)
   puts "INFO -- Waiting #{wait_time_in_seconds} seconds before retrying"
   sleep wait_time_in_seconds
   if retries <= 1

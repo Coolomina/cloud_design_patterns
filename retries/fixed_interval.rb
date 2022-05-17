@@ -1,20 +1,19 @@
 require 'net/http'
 
-def get(host, path, retries = 3, backoff = 2)
+def get(host, path, retries = 3, backoff = 3)
   c = Net::HTTP.new(host)
-
+  
   puts "INFO -- Trying http://#{host}#{path}"
   response = c.request_get(path)
 rescue StandardError => e
   puts "ERROR -- Error caught (#{e.class})"
-  wait_time_in_seconds = 2**backoff
-  puts "INFO -- Waiting #{wait_time_in_seconds} seconds before retrying"
-  sleep wait_time_in_seconds
+  puts "INFO -- Waiting #{backoff} seconds before retrying"
+  sleep backoff
   if retries <= 1
     raise
   end
-  
-  get(host, path, retries - 1, backoff + 1)
+
+  get(host, path, retries - 1, backoff)
 end
 
 get("error-generating.domain", "/")
