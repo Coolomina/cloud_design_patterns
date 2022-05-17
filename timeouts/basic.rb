@@ -6,7 +6,7 @@ def get(host, path)
 
   response = c.request_get(path)
 rescue StandardError => e
-  puts "Error!"
+  puts "Error! #{e.class}"
 end
 
 get("10.0.0.1", "/")
